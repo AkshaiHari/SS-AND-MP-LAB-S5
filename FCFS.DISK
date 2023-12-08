@@ -1,0 +1,63 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int main()
+{
+    int diskqueue[20],i,n,seektime=0,diff;
+    printf("Enter the size of queue : ");
+    scanf("%d",&n);
+    printf("Enter the queue : ");
+    for(i=1;i<=n;i++)
+    {
+        scanf("%d",&diskqueue[i]);
+    }
+    printf("\nMOVEMENT OF THE CYLINDER\n");
+    printf("Enter the initial head value : ");
+    scanf("%d",&diskqueue[0]);
+    for(i=0;i<n;i++)
+    {
+        diff=abs(diskqueue[i+1]-diskqueue[i]);
+        seektime+=diff;
+        printf("\nMOVE FROM %d to %d with seektime %d\n",diskqueue[i],diskqueue[i+1],diff);
+    }
+    printf("\nTOTAL SEEK TIME = %d",seektime);
+    printf("\nAVERAGE SEEK TIME = %d",seektime/n);
+}
+
+
+
+
+
+/* OUTPUT
+
+Enter the size of queue : 8
+Enter the queue : 176
+79
+34
+60
+92
+11
+41
+114
+MOVEMENT OF THE CYLINDER
+Enter the initial head value : 50
+MOVE FROM 50 to 176 with seektime 126
+
+MOVE FROM 176 to 79 with seektime 97
+
+MOVE FROM 79 to 34 with seektime 45
+
+MOVE FROM 34 to 60 with seektime 26
+
+MOVE FROM 60 to 92 with seektime 32
+
+MOVE FROM 92 to 11 with seektime 81
+
+MOVE FROM 11 to 41 with seektime 30
+
+MOVE FROM 41 to 114 with seektime 73
+
+TOTAL SEEK TIME = 510
+AVERAGE SEEK TIME = 63
+
+*/
